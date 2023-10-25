@@ -37,7 +37,7 @@ module module_benchmark_core
 		! Elapsed Time variables
 		integer :: ts, te, t_rate, t_max
 		
-		FILE_NAME = "./output/lesrst_restart.nc"
+		FILE_NAME = "gfarms:lesrst_restart.nc"
 		ret = nf90_open_par(FILE_NAME, IOR(NF90_NOWRITE, NF90_MPIIO), &
 						MPI_COMM_WORLD, MPI_INFO_NULL, ncid_read)
 		ret = nf90_set_fill(ncid_read, nf90_nofill, oldmode)
@@ -189,7 +189,7 @@ module module_benchmark_core
                 integer :: fsize
 		
 		! Create NetCDF File Section - OUT
-		FILE_NAME = "./output/lesout_integral.nc"
+		FILE_NAME = "gfarms:lesout_integral.nc"
 		call check(nf90_create_par(FILE_NAME, IOR(NF90_NETCDF4, NF90_MPIIO), MPI_COMM_WORLD, MPI_INFO_NULL, ncid_sum))
 		ret = nf90_set_fill(ncid_sum, nf90_nofill, oldmode)
 		
@@ -275,7 +275,7 @@ module module_benchmark_core
                 integer :: fsize
 	
 		! Create NetCDF File - OUT
-		FILE_NAME = "./output/lesout_instant.nc"
+		FILE_NAME = "gfarms:lesout_instant.nc"
 		ret = nf90_create_par(FILE_NAME, IOR(NF90_NETCDF4, NF90_MPIIO), MPI_COMM_WORLD, MPI_INFO_NULL, ncid_out)
 		ret = nf90_set_fill(ncid_out, nf90_nofill, oldmode)
 
@@ -457,7 +457,7 @@ module module_benchmark_core
 		integer :: ts, te, t_rate, t_max
 		
 		! Create NetCDF File - OUT
-		FILE_NAME = "./output/lesout_average.nc"
+		FILE_NAME = "gfarms:lesout_average.nc"
 		ret = nf90_create_par(FILE_NAME, IOR(NF90_NETCDF4, NF90_MPIIO), MPI_COMM_WORLD, MPI_INFO_NULL, ncid_out)
 		ret = nf90_set_fill(ncid_out, nf90_nofill, oldmode)
 	
@@ -826,7 +826,7 @@ module module_benchmark_core
 		integer :: ts, te, t_rate, t_max
 		
 		! Create NetCDF File - RST
-		FILE_NAME = "./output/lesrst_restart.nc"
+		FILE_NAME = "gfarms:lesrst_restart.nc"
 		ret = nf90_create_par(FILE_NAME, IOR(NF90_NETCDF4, NF90_MPIIO), MPI_COMM_WORLD, MPI_INFO_NULL, ncid_rst)
 		ret = nf90_set_fill(ncid_rst, nf90_nofill, oldmode)
 		
