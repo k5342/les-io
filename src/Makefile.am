@@ -1,4 +1,4 @@
-bin_PROGRAMS = LESBENCHMARK
+bin_PROGRAMS = LESBENCHMARK LESBENCHMARK_write LESBENCHMARK_read
 
 LESBENCHMARK_SOURCES =          \
 	main.f90                    \
@@ -10,13 +10,37 @@ LESBENCHMARK_SOURCES =          \
 	module_read_namelist.f90    \
 	module_var_output.f90
 
+LESBENCHMARK_write_SOURCES =    \
+	main_write.f90              \
+	module_allocate_memory.f90  \
+	module_benchmark_core.f90   \
+	module_mpi.f90              \
+	module_output.f90           \
+	module_param_namelist.f90   \
+	module_read_namelist.f90    \
+	module_var_output.f90
+
+LESBENCHMARK_read_SOURCES =     \
+	main_read.f90               \
+	module_allocate_memory.f90  \
+	module_benchmark_core.f90   \
+	module_mpi.f90              \
+	module_output.f90           \
+	module_param_namelist.f90   \
+	module_read_namelist.f90    \
+	module_var_output.f90
+
 LESBENCHMARK_LDADD = @NETCDFF_LIBS@ @NETCDF_LIBS@
+LESBENCHMARK_write_LDADD = @NETCDFF_LIBS@ @NETCDF_LIBS@
+LESBENCHMARK_read_LDADD = @NETCDFF_LIBS@ @NETCDF_LIBS@
 AM_FCFLAGS = @NETCDFF_CFLAGS@ @NETCDF_CFLAGS@
 
 clean-local:
 	rm -f *.mod
 
 main.o: main.f90 module_output.o module_benchmark_core.o module_allocate_memory.o module_var_output.o module_read_namelist.o module_mpi.o
+main_write.o: main_write.f90 module_output.o module_benchmark_core.o module_allocate_memory.o module_var_output.o module_read_namelist.o module_mpi.o
+main_read.o: main_read.f90 module_output.o module_benchmark_core.o module_allocate_memory.o module_var_output.o module_read_namelist.o module_mpi.o
 module_allocate_memory.o: module_allocate_memory.f90 module_param_namelist.o module_var_output.o module_mpi.o
 module_benchmark_core.o: module_benchmark_core.f90 module_mpi.o module_var_output.o module_param_namelist.o
 module_mpi.o: module_mpi.f90 module_param_namelist.o
