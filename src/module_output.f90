@@ -47,10 +47,10 @@ module module_output
 		integer(8), intent(in) :: datasize
 		real(4), intent(in) :: maxtime_call, maxtime_write
 		
-		write(6, '(a28,f15.5,a10)') "   DataSize/process     :  ", dble(datasize)/1024.d0/1024.d0, "[MiB]"
-		write(6, '(a28,f15.5,a10)') "   MaximumCallTime      :  ", maxtime_call, "[sec]"
-		write(6, '(a28,f15.5,a10)') "   MaximumWriteTime     :  ", maxtime_write, "[sec]"
-	        write(6, '(a28,f15.5,a10)') "   Bandwidth            :  ", &
+		write(6, '(a28,f11.5,a10)') "   DataSize/process     :  ", dble(datasize)/1024.d0/1024.d0, "[MiB]"
+		write(6, '(a28,f11.5,a10)') "   MaximumCallTime      :  ", maxtime_call, "[sec]"
+		write(6, '(a28,f11.5,a10)') "   MaximumWriteTime     :  ", maxtime_write, "[sec]"
+	        write(6, '(a28,f11.5,a10)') "   Bandwidth            :  ", &
                      ( (dble(datasize)/1024.d0/1024.d0) / dble(maxtime_write) ) * dble(nprocs), "[MiB/sec]"
 		
 		flush(6)
@@ -65,10 +65,10 @@ module module_output
 		integer(8), intent(in) :: datasize
 		real(4), intent(in) :: maxtime_call, maxtime_write
 
-		write(6, '(a28,f15.5,a10)') "   DataSize/process     :  ", dble(datasize)/1024.d0/1024.d0, "[MiB]"
-		write(6, '(a28,f15.5,a10)') "   MaximumCallTime      :  ", maxtime_call, "[sec]"
-		write(6, '(a28,f15.5,a10)') "   MaximumReadTime      :  ", maxtime_write, "[sec]"
-		write(6, '(a28,f15.5,a10)') "   Bandwidth            :  ", &
+		write(6, '(a28,f11.5,a10)') "   DataSize/process     :  ", dble(datasize)/1024.d0/1024.d0, "[MiB]"
+		write(6, '(a28,f11.5,a10)') "   MaximumCallTime      :  ", maxtime_call, "[sec]"
+		write(6, '(a28,f11.5,a10)') "   MaximumReadTime      :  ", maxtime_write, "[sec]"
+		write(6, '(a28,f11.5,a10)') "   Bandwidth            :  ", &
                      ( (dble(datasize)/1024.d0/1024.d0) / dble(maxtime_write) ) * dble(nprocs), "[MiB/sec]"
 		
 		flush(6)
