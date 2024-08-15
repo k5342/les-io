@@ -110,24 +110,6 @@ program LESBENCHMARK
 		call OutputWriteResult( datasize, maxtime_call, maxtime_write )
 	end if
 
-	! -- Restart (read) 
-	if( myrank == 0 ) then
-		print *, "Restart (READ)"
-	end if
-
-	time_write = 0.0
-	call system_clock(ts)
-		call ReadRestartNetCDF( datasize, time_write )
-	call system_clock(te, t_rate, t_max)
-	
-	time_call = (te-ts)/real(t_rate)
-	call MPI_Reduce(time_call, maxtime_call, 1, MPI_FLOAT, MPI_MAX, 0, MPI_COMM_WORLD, ierr)
-	call MPI_Reduce(time_write, maxtime_write, 1, MPI_FLOAT, MPI_MAX, 0, MPI_COMM_WORLD, ierr)
-
-	if( myrank == 0 ) then
-		call OutputReadResult( datasize, maxtime_call, maxtime_write )
-	end if
-
 	! -- Benchmarks END
 	
 	if( myrank == 0 ) then
