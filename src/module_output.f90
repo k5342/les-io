@@ -51,7 +51,7 @@ module module_output
 		write(6, '(a28,f11.5,a10)') "   MaximumCallTime      :  ", maxtime_call, "[sec]"
 		write(6, '(a28,f11.5,a10)') "   MaximumWriteTime     :  ", maxtime_write, "[sec]"
 	        write(6, '(a28,f11.5,a10)') "   Bandwidth            :  ", &
-                     ( (dble(datasize)/1024.d0/1024.d0) / dble(maxtime_write) ) * dble(nprocs), "[MiB/sec]"
+                     ( (dble(datasize)/1024.d0/1024.d0/1024.d0) / dble(maxtime_write) ) * dble(nprocs), "[GiB/sec]"
 		
 		flush(6)
 			
@@ -69,7 +69,7 @@ module module_output
 		write(6, '(a28,f11.5,a10)') "   MaximumCallTime      :  ", maxtime_call, "[sec]"
 		write(6, '(a28,f11.5,a10)') "   MaximumReadTime      :  ", maxtime_write, "[sec]"
 		write(6, '(a28,f11.5,a10)') "   Bandwidth            :  ", &
-                     ( (dble(datasize)/1024.d0/1024.d0) / dble(maxtime_write) ) * dble(nprocs), "[MiB/sec]"
+                     ( (dble(datasize)/1024.d0/1024.d0/1024.d0) / dble(maxtime_write) ) * dble(nprocs), "[GiB/sec]"
 		
 		flush(6)
 
